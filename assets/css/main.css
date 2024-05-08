@@ -582,6 +582,30 @@ section {
   border-radius: 8px;
 }
 
+.logs:hover{
+  background-color: #000 !important;
+  color: #fff;
+  cursor: pointer;
+}
+
+.swiper-navBtn {
+  color: #fff;
+  height: 40px;
+  width: 40px;
+  transform: translateY(-40%);
+  background: #000;
+  border-radius: 10px;
+  box-shadow: rgba(36, 36, 36, 0.14) 0px 1px 8px;
+}
+.swiper-navBtn::before,
+.swiper-navBtn::after {
+  font-size: 24px;
+}
+
+.swiper-pagination-bullet {
+  background-color: #333;
+}
+
 @media screen and (max-width: 768px) {
   .slide-container {
     overflow: visible;
