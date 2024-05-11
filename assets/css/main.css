@@ -1818,10 +1818,22 @@ section {
   margin-top: 30px;
   background-color: #fff;
   border-radius: 35px;
+  margin-left: 10px;
 }
 .btn-search:hover{
   background-color: #e7e7e7;
   color: #000;
+}
+.btn-start{
+  margin-top: 30px;
+  background-color: #136DFB;
+  border-radius: 35px;
+  color: #fff;
+}
+.btn-start:hover{
+  background-color: #005ff8;
+  color: #000;
+  color: #fff;
 }
 .btn-plan{
   background-color: #136DFB;
