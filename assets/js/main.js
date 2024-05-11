@@ -246,40 +246,52 @@ $(document).ready(function () {
     $(this).addClass("main-menu-active");
   });
 
-  $("#sendEmail").click(function () {
-    var emailAdd = $("#emailAdd").val();
-    var firstName = $("#firstName").val();
-    var workPhone = $("#workPhone").val();
-    var country = $("#country").val();
-    var lastName = $("#lastName").val();
-    var jobTitle = $("#jobTitle").val();
-    var compName = $("#compName").val();
-    var textArea = $("#textArea").val();
-    if(emailAdd == "" && firstName == "" && workPhone == "" && country == ""){
+  $("#sendEmail").click(async () => {
+    // Ambil nilai dari input
+    let formData = {
+      emailAdd: $("#emailAdd").val(),
+      firstName: $("#firstName").val(),
+      lastName: $("#lastName").val(),
+      jobTitle: $("#jobTitle").val(),
+      compName: $("#compName").val(),
+      workPhone: $("#workPhone").val(),
+      country: $("#country").val(),
+      textArea: $("#textArea").val()
+    };
+  
+    // Validasi formulir
+    if (formData.emailAdd === '' || formData.firstName === '' || formData.workPhone === '' || formData.country === '') {
       Swal.fire({
-        text: "Please fill in the blank!",
-        icon: "error",
-        confirmButtonText: "OK",
+        text: 'Please fill in the required fields!',
+        icon: 'error',
+        confirmButtonText: 'OK'
       });
-    }
-    else{
-      Swal.fire({
-        text: "Request Demo has been send!",
-        icon: "success",
-        confirmButtonText: "OK",
-      }).then(function() {
-        $("#exampleModal").modal('hide');
-        $("#emailAdd").val("");
-        $("#firstName").val("");
-        $("#workPhone").val("");
-        $("#country").val("");
-        $("#lastName").val("");
-        $("#jobTitle").val("");
-        $("#compName").val("");
-        $("#textArea").val("");
-      });
+    } else {
+      try {
+        // Kirim email menggunakan EmailJS
+        const response = await emailjs.send('service_xbvy0sw', 'template_5ndapnr', formData);
+        
+        // Tampilkan pesan sukses
+        Swal.fire({
+          text: 'Demo request has been sent!',
+          icon: 'success',
+          confirmButtonText: 'OK'
+        }).then(() => {
+          // Sembunyikan modal dan reset input
+          $("#exampleModal").modal('hide');
+          $("#emailAdd, #firstName, #lastName, #jobTitle, #compName, #workPhone, #country, #textArea").val('');
+        });
+      } catch (error) {
+        console.error('Error sending email:', error);
+        Swal.fire({
+          text: 'Failed to send demo request. Please try again later.',
+          icon: 'error',
+          confirmButtonText: 'OK'
+        });
+      }
     }
   });
+
 
   // Search menu
   $("#kosKosan").click(function () {
