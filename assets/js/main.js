@@ -246,6 +246,41 @@ $(document).ready(function () {
     $(this).addClass("main-menu-active");
   });
 
+  $("#sendEmail").click(function () {
+    var emailAdd = $("#emailAdd").val();
+    var firstName = $("#firstName").val();
+    var workPhone = $("#workPhone").val();
+    var country = $("#country").val();
+    var lastName = $("#lastName").val();
+    var jobTitle = $("#jobTitle").val();
+    var compName = $("#compName").val();
+    var textArea = $("#textArea").val();
+    if(emailAdd == "" && firstName == "" && workPhone == "" && country == ""){
+      Swal.fire({
+        text: "Please fill in the blank!",
+        icon: "error",
+        confirmButtonText: "OK",
+      });
+    }
+    else{
+      Swal.fire({
+        text: "Request Demo has been send!",
+        icon: "success",
+        confirmButtonText: "OK",
+      }).then(function() {
+        $("#exampleModal").modal('hide');
+        $("#emailAdd").val("");
+        $("#firstName").val("");
+        $("#workPhone").val("");
+        $("#country").val("");
+        $("#lastName").val("");
+        $("#jobTitle").val("");
+        $("#compName").val("");
+        $("#textArea").val("");
+      });
+    }
+  });
+
   // Search menu
   $("#kosKosan").click(function () {
     $(".btn-search").attr("id", "btnSearchKos");
