@@ -45,7 +45,7 @@
     <!-- ======= Header ======= -->
     <header
       id="header"
-      class="header fixed-top d-flex align-items-center shadow-sm"
+      class="header d-flex align-items-center shadow-sm fixed-top"
     >
       <div
         class="container-fluid container-xl d-flex align-items-center justify-content-between"
@@ -571,7 +571,14 @@
     <!-- Vendor JS Files -->
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script>
+      (function(){
+         emailjs.init('s3JXSkbSx1gJ_E2zQ'); // Gantilah YOUR_USER_ID dengan User ID Anda
+      })();
+   </script>
     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
     <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
